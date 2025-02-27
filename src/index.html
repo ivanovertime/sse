@@ -1,0 +1,20 @@
+<script type="text/javascript">
+  const eventSource = new EventSource('/sse');
+  // Set up an event listener for the 'message' event that is fired by the
+  // EventSource object. When this event is fired, the callback function is
+  // called with an event object as its argument. The event object contains
+  // information about the event that fired, such as the data that was received.
+  eventSource.onmessage = ({ data }) => {
+    // Create a new <li> element. This is the element that will be appended to
+    // the <ul> element and will display the received data.
+    const message = document.createElement('li');
+
+    // Set the text content of the <li> element to the received data, prefixed
+    // with 'New message: '.
+    message.innerText = 'New message: ' + data;
+
+    // Append the <li> element to the end of the <body> element. This will
+    // display the <li> element at the bottom of the page.
+    document.body.appendChild(message);
+  }
+</script>
